@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Untuk Kamu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <audio id="bg-music" autoplay loop>
+      <source src="music/romantic.mp3" type="audio/mpeg" />
+    </audio>
+
+    <div class="floating"></div>
+
+    <div class="container">
+      <h1>HALLO CANTIK</h1>
+      <div id="typing"></div>
+
+      <a href="flower.html" class="btn">Untuk Kamu 🤍</a>
+    </div>
+
+    <script>
+      const text =
+        "Mungkin ini sederhana,\n" +
+        "Tapi dibuat khusus karena kamu istimewa.\n" +
+        "Stay Safe And Keep Healty.\n" +
+        "Semoga suka yaaa !!!.";
+
+      let i = 0;
+      const target = document.getElementById("typing");
+
+      function typeEffect() {
+        if (i < text.length) {
+          target.innerHTML += text[i] === "\n" ? "<br>" : text[i];
+          i++;
+          setTimeout(typeEffect, 65);
+        }
+      }
+      typeEffect();
+
+      const floating = document.querySelector(".floating");
+      const icons = ["🌸", "💖", "💗", "💞"];
+
+      setInterval(() => {
+        const span = document.createElement("span");
+        span.textContent = icons[Math.floor(Math.random() * icons.length)];
+        span.style.left = Math.random() * 100 + "%";
+        span.style.fontSize = 14 + Math.random() * 18 + "px";
+        span.style.animationDuration = 10 + Math.random() * 10 + "s";
+        floating.appendChild(span);
+        setTimeout(() => span.remove(), 20000);
+      }, 800);
+
+      const music = document.getElementById("bg-music");
+      music.volume = 0.35;
+      document.addEventListener("click", () => music.play(), { once: true });
+    </script>
+  </body>
+</html>
